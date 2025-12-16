@@ -1,13 +1,28 @@
 # Changelog
 
-All notable changes to the Compliance Audit Skill will be documented in this file.
+All notable changes to the Compliance Audit Plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.0.0] - 2024-12-16
 
+### Changed
+- **BREAKING**: Converted from standalone skill to Claude Code plugin
+- Restructured project to follow plugin architecture
+- Moved skill from `.claude/skills/compliance-audit/` to `skills/compliance-audit/`
+- Updated README.md with plugin installation instructions
+- Updated INSTALL.md with plugin-first installation approach
+- Added plugin manifest (`.claude-plugin/plugin.json`)
+- Created test marketplace structure for local development
+
 ### Added
+- `.claude-plugin/plugin.json` - Plugin manifest with metadata
+- Test marketplace at `../compliance-plugin-marketplace/`
+- QUICKSTART.md for rapid plugin setup
+- Plugin installation via marketplace system
+- Support for plugin scopes (user, project, local)
+- Plugin management commands documentation
 - Initial release of Compliance Audit Skill for Claude Code
 - Intelligent framework detection system
 - Support for 5 major compliance frameworks:

@@ -1,6 +1,6 @@
-# Compliance Audit Skill for Claude Code
+# Compliance Audit Plugin for Claude Code
 
-An intelligent Claude Code skill that automatically audits your software projects for compliance with major regulatory frameworks including GDPR, HIPAA, PCI-DSS, CCPA/CPRA, and SOC 2.
+An intelligent Claude Code plugin that automatically audits your software projects for compliance with major regulatory frameworks including GDPR, HIPAA, PCI-DSS, CCPA/CPRA, and SOC 2.
 
 ## Features
 
@@ -26,23 +26,39 @@ An intelligent Claude Code skill that automatically audits your software project
 
 ## Installation
 
-### For a Specific Project (Recommended)
+### Option 1: From GitHub (Recommended)
 
-1. Copy the `.claude` directory to your project root:
-   ```bash
-   cp -r .claude /path/to/your/project/
-   ```
+Install directly from the GitHub repository:
 
-2. The skill will be automatically available when using Claude Code in that project
+```shell
+# Add this repository as a marketplace
+/plugin marketplace add disruptica/compliance-agent
 
-### For All Your Projects (Personal Skill)
+# Install the plugin
+/plugin install compliance-audit@compliance-agent
+```
 
-1. Copy the skill to your Claude Code personal skills directory:
-   ```bash
-   cp -r .claude/skills/compliance-audit ~/.claude/skills/
-   ```
+### Option 2: Manual Installation
 
-2. The skill will be available across all your projects
+If you prefer not to use the plugin system, you can install the skill manually:
+
+**For a specific project:**
+```bash
+# Clone the repository
+git clone https://github.com/disruptica/compliance-agent.git
+
+# Copy the skill to your project
+cp -r compliance-agent/skills/compliance-audit /path/to/your/project/.claude/skills/
+```
+
+**For all your projects:**
+```bash
+# Clone the repository
+git clone https://github.com/disruptica/compliance-agent.git
+
+# Copy to your global skills directory
+cp -r compliance-agent/skills/compliance-audit ~/.claude/skills/
+```
 
 ## Usage
 
@@ -117,22 +133,29 @@ Phase 2 (Weeks 3-6): High-Priority Improvements
 [...]
 ```
 
-## Skill Structure
+## Plugin Structure
 
 ```
-.claude/skills/compliance-audit/
-├── SKILL.md                    # Main skill definition with instructions
-├── detection-criteria.md       # Framework applicability logic
-├── examples.md                 # Sample audit reports
-├── templates/
-│   ├── executive-summary.md   # Executive report template
-│   └── detailed-report.md     # Technical report template
-└── reference/
-    ├── gdpr.md                # GDPR compliance checklist
-    ├── hipaa.md               # HIPAA compliance checklist
-    ├── pci-dss.md             # PCI-DSS compliance checklist
-    ├── ccpa.md                # CCPA/CPRA compliance checklist
-    └── soc2.md                # SOC 2 compliance checklist
+compliance-agent/
+├── .claude-plugin/
+│   └── plugin.json            # Plugin manifest and metadata
+├── skills/
+│   └── compliance-audit/
+│       ├── SKILL.md           # Main skill definition with instructions
+│       ├── detection-criteria.md  # Framework applicability logic
+│       ├── examples.md        # Sample audit reports
+│       ├── templates/
+│       │   ├── executive-summary.md  # Executive report template
+│       │   └── detailed-report.md    # Technical report template
+│       └── reference/
+│           ├── gdpr.md        # GDPR compliance checklist
+│           ├── hipaa.md       # HIPAA compliance checklist
+│           ├── pci-dss.md     # PCI-DSS compliance checklist
+│           ├── ccpa.md        # CCPA/CPRA compliance checklist
+│           └── soc2.md        # SOC 2 compliance checklist
+├── README.md                  # This file
+├── INSTALL.md                 # Installation guide
+└── CHANGELOG.md               # Version history
 ```
 
 ## What the Skill Does

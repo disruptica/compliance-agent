@@ -1,132 +1,254 @@
 # Installation Guide
 
-## Quick Install
+This guide covers how to install the Compliance Audit plugin for Claude Code using the plugin system, as well as legacy manual installation methods.
 
-### Option 1: Project-Specific Installation (Recommended)
+## Plugin Installation (Recommended)
 
-Install this skill for a specific project:
+### Prerequisites
+
+- Claude Code installed on your machine
+- Basic familiarity with command-line tools
+
+### From GitHub Repository
+
+The easiest way to install this plugin is directly from GitHub:
+
+1. **Add this repository as a marketplace**:
+   ```shell
+   /plugin marketplace add disruptica/compliance-agent
+   ```
+
+2. **Install the plugin**:
+   ```shell
+   /plugin install compliance-audit@compliance-agent
+   ```
+
+   Or browse and install interactively:
+   ```shell
+   /plugin
+   ```
+   Select "Browse Plugins" → Find "compliance-audit" → Install
+
+3. **Restart Claude Code** to activate the plugin
+
+4. **Verify installation**:
+   - Run `/help` to see if the plugin's features are available
+   - Try: "Can you audit my project for compliance?"
+
+### For Local Development/Testing
+
+If you're developing or testing changes to this plugin:
+
+1. **Fork or clone this repository**:
+   ```bash
+   git clone https://github.com/disruptica/compliance-agent.git
+   cd compliance-agent
+   ```
+
+2. **Add the local repository as a marketplace**:
+   ```shell
+   /plugin marketplace add /absolute/path/to/compliance-agent
+   ```
+
+3. **Install the plugin**:
+   ```shell
+   /plugin install compliance-audit@compliance-agent
+   ```
+
+4. **After making changes**, reinstall to test:
+   ```shell
+   /plugin uninstall compliance-audit@compliance-agent
+   /plugin install compliance-audit@compliance-agent
+   ```
+
+5. **Restart Claude Code** to load your changes
+
+### Installation Scopes
+
+You can install plugins at different scopes:
+
+- **User scope** (default): Available across all your projects
+  ```shell
+  /plugin install compliance-audit@marketplace
+  ```
+
+- **Project scope**: Shared with your team via version control
+  ```shell
+  /plugin install compliance-audit@marketplace --scope project
+  ```
+
+- **Local scope**: Project-specific, gitignored
+  ```shell
+  /plugin install compliance-audit@marketplace --scope local
+  ```
+
+## Manual Installation (Legacy)
+
+If you prefer not to use the plugin system, you can install the skill manually:
+
+### Project-Specific Installation
+
+Install for a specific project:
 
 ```bash
 # Navigate to your project
 cd /path/to/your/project
 
-# Copy the .claude directory from this repo
-cp -r /path/to/compliance-agent/.claude .
+# Create skills directory if it doesn't exist
+mkdir -p .claude/skills
+
+# Copy the skill
+cp -r /path/to/compliance-agent/skills/compliance-audit .claude/skills/
 
 # The skill is now available in this project!
 ```
 
-### Option 2: Global Installation
+### Global Installation
 
-Install this skill for all your projects:
+Install for all your projects:
 
 ```bash
 # Create personal skills directory if it doesn't exist
 mkdir -p ~/.claude/skills
 
-# Copy the compliance-audit skill
-cp -r /path/to/compliance-agent/.claude/skills/compliance-audit ~/.claude/skills/
+# Copy the skill
+cp -r /path/to/compliance-agent/skills/compliance-audit ~/.claude/skills/
 
 # The skill is now available in all your projects!
 ```
 
+## Plugin Management
+
+### Update a Plugin
+
+```shell
+/plugin update compliance-audit@marketplace
+```
+
+Or reinstall:
+```shell
+/plugin uninstall compliance-audit@marketplace
+/plugin install compliance-audit@marketplace
+```
+
+### Disable a Plugin (without uninstalling)
+
+```shell
+/plugin disable compliance-audit@marketplace
+```
+
+### Re-enable a Plugin
+
+```shell
+/plugin enable compliance-audit@marketplace
+```
+
+### Uninstall a Plugin
+
+```shell
+/plugin uninstall compliance-audit@marketplace
+```
+
 ## Verification
 
-After installation, verify the skill is working:
+After installation, verify the plugin is working:
 
-1. Open Claude Code in your project (or any project if you did global install)
-2. Ask: "What skills are available?"
-3. You should see "compliance-audit" in the list
-
-Or test it directly:
-```
-"Can you audit my project for compliance?"
-```
-
-Claude should respond by analyzing your project and asking questions about applicable frameworks.
-
-## Manual Installation
-
-If you prefer to set up manually:
-
-1. **Create the skill directory structure:**
-   ```bash
-   mkdir -p .claude/skills/compliance-audit/{reference,templates}
+1. **Check available features**:
+   ```shell
+   /help
    ```
 
-2. **Copy the files:**
-   - SKILL.md → .claude/skills/compliance-audit/
-   - detection-criteria.md → .claude/skills/compliance-audit/
-   - examples.md → .claude/skills/compliance-audit/
-   - All reference/*.md files → .claude/skills/compliance-audit/reference/
-   - All templates/*.md files → .claude/skills/compliance-audit/templates/
-
-3. **Verify the structure:**
+2. **Test the skill directly**:
    ```
-   .claude/skills/compliance-audit/
-   ├── SKILL.md
-   ├── detection-criteria.md
-   ├── examples.md
-   ├── reference/
-   │   ├── gdpr.md
-   │   ├── hipaa.md
-   │   ├── pci-dss.md
-   │   ├── ccpa.md
-   │   └── soc2.md
-   └── templates/
-       ├── executive-summary.md
-       └── detailed-report.md
+   "Can you audit my project for compliance?"
    ```
 
-## Updating
-
-To update the skill:
-
-1. Pull the latest changes from this repo
-2. Re-run the installation command for your chosen option
-3. The skill will be updated with new framework requirements and improvements
-
-## Uninstalling
-
-### Project-Specific
-```bash
-rm -rf .claude/skills/compliance-audit
-```
-
-### Global
-```bash
-rm -rf ~/.claude/skills/compliance-audit
-```
+3. **Check plugin status**:
+   ```shell
+   /plugin
+   ```
+   Select "Manage Plugins" to see installed plugins
 
 ## Troubleshooting
 
-### Skill Not Appearing
+### Plugin Not Appearing
 
-**Problem:** Claude doesn't recognize the skill
+**Problem:** Plugin doesn't show up after installation
 
 **Solutions:**
-1. Verify the .claude/skills/compliance-audit directory exists
-2. Check that SKILL.md has proper YAML frontmatter
-3. Restart Claude Code session
-4. Try asking directly: "Can you audit for GDPR compliance?"
+1. Restart Claude Code (`/exit` then restart)
+2. Verify installation: `/plugin` → "Manage Plugins"
+3. Check marketplace is added: `/plugin` → "Manage Marketplaces"
+4. Try reinstalling: `/plugin uninstall` then `/plugin install`
 
-### Wrong Framework Detection
+### Skill Not Being Used
 
-**Problem:** Claude suggests frameworks that don't apply
+**Problem:** Claude doesn't use the compliance-audit skill
 
-**Solution:**
-- Answer "no" to confirmation questions
-- The skill asks before auditing each framework
-- Edit detection-criteria.md to adjust detection logic
+**Solutions:**
+1. Ask explicitly: "Can you audit my project for compliance?"
+2. Mention specific frameworks: "Can you check if we comply with GDPR?"
+3. Check skill activation in the skill description
+4. Verify the skill files are in the correct location
 
-### Missing Dependencies
+### Marketplace Not Found
 
-**Problem:** Skill references files that don't exist
+**Problem:** Cannot add local marketplace
 
-**Solution:**
-1. Verify all files copied correctly
-2. Check file permissions: `ls -la .claude/skills/compliance-audit`
-3. Ensure all reference/*.md files are present
+**Solutions:**
+1. Verify the path is correct (use absolute or relative paths)
+2. Check that `.claude-plugin/marketplace.json` exists
+3. Ensure the marketplace JSON is valid
+4. Try using an absolute path: `/plugin marketplace add /absolute/path/to/marketplace`
+
+### Permission Errors
+
+**Problem:** Permission denied when installing
+
+**Solutions:**
+1. Check file permissions on the plugin directory
+2. Ensure you have write access to the installation location
+3. For global installs, you may need appropriate permissions
+
+## Development Workflow
+
+For plugin developers working on this plugin:
+
+1. **Make changes** to the plugin files
+2. **Uninstall the current version**:
+   ```shell
+   /plugin uninstall compliance-audit@compliance-plugin-marketplace
+   ```
+3. **Reinstall** to test changes:
+   ```shell
+   /plugin install compliance-audit@compliance-plugin-marketplace
+   ```
+4. **Restart Claude Code** to load the updated plugin
+5. **Test** your changes
+
+## Team Installation
+
+To set up this plugin for your team:
+
+1. **Add plugin configuration** to your repository's `.claude/settings.json`:
+   ```json
+   {
+     "plugins": {
+       "marketplaces": {
+         "compliance-marketplace": "<marketplace-url>"
+       },
+       "installed": [
+         {
+           "name": "compliance-audit",
+           "marketplace": "compliance-marketplace",
+           "enabled": true
+         }
+       ]
+     }
+   }
+   ```
+
+2. **Team members** trust the repository folder and the plugin installs automatically
 
 ## Requirements
 
@@ -137,16 +259,17 @@ rm -rf ~/.claude/skills/compliance-audit
 ## Next Steps
 
 After installation:
-1. Read README.md for usage examples
+
+1. Read [README.md](README.md) for usage examples
 2. Try an audit on a test project first
-3. Review examples.md to see sample outputs
-4. Customize detection-criteria.md if needed for your use case
+3. Review the skill's `examples.md` for sample outputs
+4. Customize `detection-criteria.md` if needed for your use case
 
 ## Support
 
-- Check README.md for general documentation
-- Review examples.md for sample audit reports
-- Consult detection-criteria.md for framework detection logic
+- Check [README.md](README.md) for general documentation
+- Review `skills/compliance-audit/examples.md` for sample audit reports
+- Consult `skills/compliance-audit/detection-criteria.md` for framework detection logic
 - Report issues or contribute improvements via GitHub
 
 ---
