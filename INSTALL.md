@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide covers how to install the Compliance Audit plugin for Claude Code using the plugin system, as well as legacy manual installation methods.
+This guide covers how to install the Kompliance-X plugin for Claude Code using the plugin system, as well as legacy manual installation methods.
 
 ## Plugin Installation (Recommended)
 
@@ -15,19 +15,19 @@ The easiest way to install this plugin is directly from GitHub:
 
 1. **Add this repository as a marketplace**:
    ```shell
-   /plugin marketplace add disruptica/compliance-agent
+   /plugin marketplace add disruptica/claude-plugins
    ```
 
 2. **Install the plugin**:
    ```shell
-   /plugin install compliance-audit@compliance-agent
+   /plugin install kompliance-x@disruptica-plugins
    ```
 
    Or browse and install interactively:
    ```shell
    /plugin
    ```
-   Select "Browse Plugins" → Find "compliance-audit" → Install
+   Select "Browse Plugins" → Find "kompliance-x" → Install
 
 3. **Restart Claude Code** to activate the plugin
 
@@ -41,24 +41,24 @@ If you're developing or testing changes to this plugin:
 
 1. **Fork or clone this repository**:
    ```bash
-   git clone https://github.com/disruptica/compliance-agent.git
-   cd compliance-agent
+   git clone https://github.com/disruptica/claude-plugins.git
+   cd claude-plugins
    ```
 
 2. **Add the local repository as a marketplace**:
    ```shell
-   /plugin marketplace add /absolute/path/to/compliance-agent
+   /plugin marketplace add /absolute/path/to/claude-plugins
    ```
 
 3. **Install the plugin**:
    ```shell
-   /plugin install compliance-audit@compliance-agent
+   /plugin install kompliance-x@disruptica-plugins
    ```
 
 4. **After making changes**, reinstall to test:
    ```shell
-   /plugin uninstall compliance-audit@compliance-agent
-   /plugin install compliance-audit@compliance-agent
+   /plugin uninstall kompliance-x@disruptica-plugins
+   /plugin install kompliance-x@disruptica-plugins
    ```
 
 5. **Restart Claude Code** to load your changes
@@ -69,17 +69,17 @@ You can install plugins at different scopes:
 
 - **User scope** (default): Available across all your projects
   ```shell
-  /plugin install compliance-audit@marketplace
+  /plugin install kompliance-x@marketplace
   ```
 
 - **Project scope**: Shared with your team via version control
   ```shell
-  /plugin install compliance-audit@marketplace --scope project
+  /plugin install kompliance-x@marketplace --scope project
   ```
 
 - **Local scope**: Project-specific, gitignored
   ```shell
-  /plugin install compliance-audit@marketplace --scope local
+  /plugin install kompliance-x@marketplace --scope local
   ```
 
 ## Manual Installation (Legacy)
@@ -98,7 +98,7 @@ cd /path/to/your/project
 mkdir -p .claude/skills
 
 # Copy the skill
-cp -r /path/to/compliance-agent/skills/compliance-audit .claude/skills/
+cp -r /path/to/claude-plugins/skills/kompliance-x .claude/skills/
 
 # The skill is now available in this project!
 ```
@@ -112,7 +112,7 @@ Install for all your projects:
 mkdir -p ~/.claude/skills
 
 # Copy the skill
-cp -r /path/to/compliance-agent/skills/compliance-audit ~/.claude/skills/
+cp -r /path/to/claude-plugins/skills/kompliance-x ~/.claude/skills/
 
 # The skill is now available in all your projects!
 ```
@@ -122,31 +122,31 @@ cp -r /path/to/compliance-agent/skills/compliance-audit ~/.claude/skills/
 ### Update a Plugin
 
 ```shell
-/plugin update compliance-audit@marketplace
+/plugin update kompliance-x@marketplace
 ```
 
 Or reinstall:
 ```shell
-/plugin uninstall compliance-audit@marketplace
-/plugin install compliance-audit@marketplace
+/plugin uninstall kompliance-x@marketplace
+/plugin install kompliance-x@marketplace
 ```
 
 ### Disable a Plugin (without uninstalling)
 
 ```shell
-/plugin disable compliance-audit@marketplace
+/plugin disable kompliance-x@marketplace
 ```
 
 ### Re-enable a Plugin
 
 ```shell
-/plugin enable compliance-audit@marketplace
+/plugin enable kompliance-x@marketplace
 ```
 
 ### Uninstall a Plugin
 
 ```shell
-/plugin uninstall compliance-audit@marketplace
+/plugin uninstall kompliance-x@marketplace
 ```
 
 ## Verification
@@ -183,7 +183,7 @@ After installation, verify the plugin is working:
 
 ### Skill Not Being Used
 
-**Problem:** Claude doesn't use the compliance-audit skill
+**Problem:** Claude doesn't use the kompliance-x skill
 
 **Solutions:**
 1. Ask explicitly: "Can you audit my project for compliance?"
@@ -217,11 +217,11 @@ For plugin developers working on this plugin:
 1. **Make changes** to the plugin files
 2. **Uninstall the current version**:
    ```shell
-   /plugin uninstall compliance-audit@compliance-plugin-marketplace
+   /plugin uninstall kompliance-x@compliance-plugin-marketplace
    ```
 3. **Reinstall** to test changes:
    ```shell
-   /plugin install compliance-audit@compliance-plugin-marketplace
+   /plugin install kompliance-x@compliance-plugin-marketplace
    ```
 4. **Restart Claude Code** to load the updated plugin
 5. **Test** your changes
@@ -239,7 +239,7 @@ To set up this plugin for your team:
        },
        "installed": [
          {
-           "name": "compliance-audit",
+           "name": "kompliance-x",
            "marketplace": "compliance-marketplace",
            "enabled": true
          }
@@ -268,8 +268,8 @@ After installation:
 ## Support
 
 - Check [README.md](README.md) for general documentation
-- Review `skills/compliance-audit/examples.md` for sample audit reports
-- Consult `skills/compliance-audit/detection-criteria.md` for framework detection logic
+- Review `skills/kompliance-x/examples.md` for sample audit reports
+- Consult `skills/kompliance-x/detection-criteria.md` for framework detection logic
 - Report issues or contribute improvements via GitHub
 
 ---

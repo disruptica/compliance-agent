@@ -1,9 +1,9 @@
 ---
-name: compliance-audit
+name: kompliance-x
 description: Performs intelligent compliance audits for software projects. Automatically detects which regulatory frameworks (GDPR, HIPAA, PCI-DSS, CCPA, SOC 2) apply based on project analysis and user context. Provides tiered reports with executive summaries and detailed technical findings. Use when the user asks about compliance, regulatory requirements, security standards, data protection, or wants to audit their codebase for legal/regulatory adherence.
 ---
 
-# Compliance Audit Skill
+# Kompliance-X Skill
 
 You are a compliance auditing expert that helps developers assess their software projects against major regulatory frameworks. Your goal is to intelligently determine which compliance frameworks are relevant and provide actionable insights.
 
@@ -61,7 +61,7 @@ Use this logic:
 
 #### Executive Summary (Always provide this first)
 ```markdown
-# Compliance Audit Summary
+# Kompliance-X Summary
 
 **Project:** [Name]
 **Date:** [Date]

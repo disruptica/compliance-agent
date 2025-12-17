@@ -1,4 +1,4 @@
-# Compliance Audit Plugin for Claude Code
+# Kompliance-X Plugin for Claude Code
 
 An intelligent Claude Code plugin that automatically audits your software projects for compliance with major regulatory frameworks including GDPR, HIPAA, PCI-DSS, CCPA/CPRA, and SOC 2.
 
@@ -32,10 +32,10 @@ Install directly from the GitHub repository:
 
 ```shell
 # Add this repository as a marketplace
-/plugin marketplace add disruptica/compliance-agent
+/plugin marketplace add disruptica/claude-plugins
 
 # Install the plugin
-/plugin install compliance-audit@compliance-agent
+/plugin install kompliance-x@disruptica-plugins
 ```
 
 ### Option 2: Manual Installation
@@ -45,19 +45,19 @@ If you prefer not to use the plugin system, you can install the skill manually:
 **For a specific project:**
 ```bash
 # Clone the repository
-git clone https://github.com/disruptica/compliance-agent.git
+git clone https://github.com/disruptica/claude-plugins.git
 
 # Copy the skill to your project
-cp -r compliance-agent/skills/compliance-audit /path/to/your/project/.claude/skills/
+cp -r claude-plugins/skills/kompliance-x /path/to/your/project/.claude/skills/
 ```
 
 **For all your projects:**
 ```bash
 # Clone the repository
-git clone https://github.com/disruptica/compliance-agent.git
+git clone https://github.com/disruptica/claude-plugins.git
 
 # Copy to your global skills directory
-cp -r compliance-agent/skills/compliance-audit ~/.claude/skills/
+cp -r claude-plugins/skills/kompliance-x ~/.claude/skills/
 ```
 
 ## Usage
@@ -136,11 +136,11 @@ Phase 2 (Weeks 3-6): High-Priority Improvements
 ## Plugin Structure
 
 ```
-compliance-agent/
+claude-plugins/
 ├── .claude-plugin/
 │   └── plugin.json            # Plugin manifest and metadata
 ├── skills/
-│   └── compliance-audit/
+│   └── kompliance-x/
 │       ├── SKILL.md           # Main skill definition with instructions
 │       ├── detection-criteria.md  # Framework applicability logic
 │       ├── examples.md        # Sample audit reports

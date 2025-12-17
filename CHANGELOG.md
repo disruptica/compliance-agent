@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the Compliance Audit Plugin will be documented in this file.
+All notable changes to the Kompliance-X Plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **BREAKING**: Converted from standalone skill to Claude Code plugin
 - Restructured project to follow plugin architecture
-- Moved skill from `.claude/skills/compliance-audit/` to `skills/compliance-audit/`
+- Moved skill from `.claude/skills/kompliance-x/` to `skills/kompliance-x/`
 - Updated README.md with plugin installation instructions
 - Updated INSTALL.md with plugin-first installation approach
 - Added plugin manifest (`.claude-plugin/plugin.json`)
@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plugin installation via marketplace system
 - Support for plugin scopes (user, project, local)
 - Plugin management commands documentation
-- Initial release of Compliance Audit Skill for Claude Code
+- Initial release of Kompliance-X Skill for Claude Code
 - Intelligent framework detection system
 - Support for 5 major compliance frameworks:
   - GDPR (General Data Protection Regulation) - EU 2016/679

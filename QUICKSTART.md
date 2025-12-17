@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-Get the Compliance Audit plugin up and running in 2 minutes.
+Get the Kompliance-X plugin up and running in 2 minutes.
 
 ## Install from GitHub
 
@@ -11,12 +11,12 @@ Get the Compliance Audit plugin up and running in 2 minutes.
 
 2. **Add the plugin marketplace**:
    ```shell
-   /plugin marketplace add disruptica/compliance-agent
+   /plugin marketplace add disruptica/claude-plugins
    ```
 
 3. **Install the plugin**:
    ```shell
-   /plugin install compliance-audit@compliance-agent
+   /plugin install kompliance-x@disruptica-plugins
    ```
 
 4. **Restart Claude Code** when prompted
@@ -41,8 +41,8 @@ After installation:
 
 - **Get help**: `/help`
 - **Check plugin status**: `/plugin`
-- **Update plugin**: `/plugin update compliance-audit@compliance-agent`
-- **Uninstall**: `/plugin uninstall compliance-audit@compliance-agent`
+- **Update plugin**: `/plugin update kompliance-x@disruptica-plugins`
+- **Uninstall**: `/plugin uninstall kompliance-x@disruptica-plugins`
 
 ## Example Usage
 
@@ -62,7 +62,7 @@ After installation:
 
 The plugin includes:
 
-- **compliance-audit skill**: Automatically used when you ask about compliance
+- **kompliance-x skill**: Automatically used when you ask about compliance
 - **5 framework checklists**: GDPR, HIPAA, PCI-DSS, CCPA/CPRA, SOC 2
 - **Smart detection**: Determines which frameworks apply to your project
 - **Tiered reporting**: Executive summaries and detailed technical reports
@@ -71,8 +71,8 @@ The plugin includes:
 
 1. Read [INSTALL.md](INSTALL.md) for detailed installation options
 2. Read [README.md](README.md) for full documentation
-3. Check `skills/compliance-audit/examples.md` for sample audit reports
-4. Customize `skills/compliance-audit/detection-criteria.md` if needed
+3. Check `skills/kompliance-x/examples.md` for sample audit reports
+4. Customize `skills/kompliance-x/detection-criteria.md` if needed
 
 ## Need Help?
 
